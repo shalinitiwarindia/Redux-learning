@@ -9,6 +9,8 @@ const reducer=(store,action) => {
 
 const initState={
     counter:0,
+    todos:[],
+    theme:"dark",
 };
 
 const store =createStore(reducer,initState);
