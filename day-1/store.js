@@ -16,3 +16,5 @@ const initState={
 const store =createStore(reducer,initState);
 
 console.log("Initial store",store.getState());
+store.dispatch({type:"ADD_COUNT",payload:1});
+console.log("After dispatch",store.getState());
