@@ -1,3 +1,5 @@
+REDUX-INTRODUCTION
+
 What is redux?
 Redux is a predictable state container for any JavaScript application. For our purpose we are going to use Redux to manage a React Application.
 
