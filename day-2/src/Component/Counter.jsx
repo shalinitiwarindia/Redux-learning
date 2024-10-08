@@ -1,1 +1,29 @@
-<h1>Counter</h1>
+import React from "react";
+import { addCounter,reduceCounter } from "../Redux/action";
+import { store } from "../Redux/store";
+
+const Counter = () => {
+    const [state,setState] = React.useState(0);
+    const {counter} = store.getState();
+    const {dispatch} = store;
+
+    const forceUpdate = () => setState(state+1);
+
+    const handleAdd = ()=>{
+        dispatch(addCounter(1));
+        forceUpdate();
+    };
+    const handleReduce = () => {
+        dispatch(reduceCounter(1));
+        forceUpdate();
+    };
+    return (
+        <>
+        <h1>Counter: {counter}</h1>
+        <button onClick={handleAdd}>ADD</button>
+        <button onClick={handleReduce}>REDUCE</button>
+        </>
+    );
+};
+
+export {Counter};
