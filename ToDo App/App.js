@@ -1,9 +1,9 @@
-// Define action types
+
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
 const TOGGLE_TODO = "TOGGLE_TODO";
 
-// Action creators
+
 const addTodo = (title) => ({
   type: ADD_TODO,
   payload: { title },
@@ -19,12 +19,11 @@ const toggleTodo = (id) => ({
   payload: { id },
 });
 
-// Initial state
+
 const initialState = {
   todos: [],
 };
 
-// Reducer function
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
@@ -54,18 +53,17 @@ const todoReducer = (state = initialState, action) => {
   }
 };
 
-// Create Redux store
+
 const store = Redux.createStore(todoReducer);
 
-// UI rendering function
 const render = () => {
   const todoList = document.getElementById("todoList");
   const state = store.getState();
 
-  // Clear existing todos in UI
+
   todoList.innerHTML = "";
 
-  // Render todos
+
   state.todos.forEach((todo) => {
     const li = document.createElement("li");
     li.className = todo.completed ? "completed" : "";
@@ -91,18 +89,13 @@ document.getElementById("addTodoBtn").addEventListener("click", () => {
   }
 });
 
-// Toggle a todo's completed status
 window.toggleTask = (id) => {
   store.dispatch(toggleTodo(id));
 };
 
-// Delete a todo
+
 window.deleteTask = (id) => {
   store.dispatch(deleteTodo(id));
 };
-
-// Subscribe to the store to re-render UI on state changes
 store.subscribe(render);
-
-// Initial render
 render();
